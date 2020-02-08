@@ -23,6 +23,10 @@ true_json_EBNF = """
 true_json_parser = Lark(true_json_EBNF, start="value")
 
 
+def text_to_ast(text):
+    return true_json_parser.parse(text)
+
+
 class TrueJsonTransformer(Transformer):
     list = list
     pair = tuple
