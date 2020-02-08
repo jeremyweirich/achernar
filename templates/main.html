@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Achernar</title>
+</head>
+<body class="bg-light">
+    <div class="container">
+
+        <div class="py-5 text-center">
+            <h2>JSON parsing with Lark</h2>
+            <p class="lead">
+                Lark is a Python framework for creating parsers.  Lark parses all context-free grammars and creates a
+                parse tree for you. Here's a quick demo of a JSON parser built using Lark, along with the parse tree it generates.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <form method="POST">
+                    <div class="row">
+                        <div class="col">
+                            <label for="grammar-input">Grammar</label>
+                            <textarea class="form-control text-white bg-dark" id="grammar-input" rows="{{ grammar_rows }}" name="grammar">{{ grammar }}</textarea>
+                        </div>
+                        <div class="col">
+                            <label for="parser-input">Text</label>
+                            <textarea class="form-control text-white bg-dark" id="parser-input" rows="{{ text_rows }}" name="text">{{ text }}</textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary my-3">Parse</button>
+                </form>
+            </div>
+        </div>
+
+        {% if ast %}
+        <div class="my-3 card text-white bg-success">
+            <div class="card-header">Parse Tree</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><pre>{{ ast }}</pre></li>
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="my-3 card text-white bg-danger">
+            <div class="card-header">Error</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><pre>{{ error }}</pre></li>
+            </ul>
+        </div>
+        {% endif %}
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
